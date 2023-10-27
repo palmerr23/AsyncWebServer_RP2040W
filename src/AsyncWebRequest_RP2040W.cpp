@@ -1269,6 +1269,17 @@ void AsyncWebServerRequest::sendChunked(const String& contentType, AwsResponseFi
   send(beginChunkedResponse(contentType, callback, templateCallback));
 }
 
+//////////////////////////////////////// RP MOD
+
+void AsyncWebServerRequest::send_P(int code, const String& contentType, const uint8_t * content, size_t len, AwsTemplateProcessor callback){
+  send(beginResponse_P(code, contentType, content, len, callback));
+}
+
+void AsyncWebServerRequest::send_P(int code, const String& contentType, PGM_P content, AwsTemplateProcessor callback){
+  send(beginResponse_P(code, contentType, content, callback));
+}
+
+
 /////////////////////////////////////////////////
 
 void AsyncWebServerRequest::redirect(const String& url)
